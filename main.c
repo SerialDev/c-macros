@@ -28,8 +28,11 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(*a))
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
+#define TRY(x,s)            if(!(x)){printf("%s:%d:%s",__FILE__, __LINE__,s);}
+
 UNIMPLEMENTED (lsh_loop);
 UNIMPLEMENTED (test);
+
 
 int main(){
 
@@ -45,6 +48,8 @@ int main(){
 
     // int h = IS_BETWEEN(i, l, u);
     bool h = IS_EVEN(i);
+
+    TRY( n > 0  , "This really should fail");
 
     printf("%d \n", z);
     printf("%d \n", ARRAY_SIZE(array));
