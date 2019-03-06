@@ -28,6 +28,21 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(*a))
 #define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
+//  Print an array based on formatter : Usage PRINTA(test_array, d); where d is any %s %d %c etc..
+#define PRINTA(array, fmt) \
+for (int i=0; i < COUNT_OF(##array); i++){ \
+if (i == COUNT_OF(##array ) -1){ \
+    printf("%" #fmt "]\n", ##array[i]); \
+} \
+else if(i == 0){ \
+    printf("[%" #fmt " ", ##array[i]); \
+} \
+else{ \
+    printf("%" #fmt " ", ##array[i]); \
+} \
+}
+
+
 #define TRY(x,s)            if(!(x)){printf("%s:%d:%s",__FILE__, __LINE__,s);}
 
 UNIMPLEMENTED (lsh_loop);
